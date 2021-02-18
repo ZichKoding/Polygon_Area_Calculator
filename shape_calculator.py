@@ -87,7 +87,6 @@ class Rectangle:
 class Square(Rectangle):
   def __init__(self, side=None):
     self.side = side
-    self.area = None
   # The next 3 methods below are for you decide to call the side height or width instead of side. 
   def set_side(self, new_side):
     self.side = new_side
