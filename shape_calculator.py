@@ -8,7 +8,7 @@ class Rectangle:
     self.side = None
 
   def set_attributes(self, new_width=None, new_height=None):
-    if new_width is None:
+    if new_width is None: # The self.side parts are mainly for the subclass Square below.
       self.side = new_height
       return self.side
     elif new_height is None:
@@ -28,7 +28,7 @@ class Rectangle:
     return self.height
 
   def get_area(self):
-    if self.side is not None:
+    if self.side is not None:  # The self.side parts are mainly for the subclass Square below.
       self.area = (self.side ** 2)
       return self.area
     else:
@@ -36,7 +36,7 @@ class Rectangle:
       return self.area
 
   def get_perimeter(self):
-    if self.side is not None:
+    if self.side is not None: # The self.side parts are mainly for the subclass Square below.
       self.perimeter = (self.side * 4)
       return self.perimeter
     else:
@@ -44,7 +44,7 @@ class Rectangle:
       return self.perimeter
 
   def get_diagonal(self):
-    if self.side is not None:
+    if self.side is not None: # The self.side parts are mainly for the subclass Square below.
       self.diagonal = ((self.side ** 2) * 2) ** 0.5
       return self.diagonal
     else:
@@ -52,14 +52,14 @@ class Rectangle:
       return self.diagonal
 
   def get_amount_inside(self, x): # x is the object/class being called to see how many can fit inside the object you are using to call this method. 
-    self.get_area()
+    self.get_area() # I had to add the get_area() methods inside this function to make sure you don't have to use them prior to the get_amount_inside() method.
     x.get_area()
-    self.amount_inside = int(self.area/x.area)
+    self.amount_inside = int(self.area/x.area) # Using int() automatically rounds down the function to the whole number.
     return self.amount_inside
 
   def get_picture(self): # It shows the object via "*". So if you have a square side is 5, it'll print out 5 rows and columns of astericks. 
-    try:
-      if self.width > 50 or int(self.height) > 50:
+    try:  # The try is for the rectangles becuase when I added the self.side to the if statement it'd give me a None type error for certain scenarios. So, the except is if the try fails it'll go as a Square. 
+      if self.width > 50 or self.height > 50:
         return "Too big for picture."
       else:
         self.picture = []
@@ -88,7 +88,7 @@ class Square(Rectangle):
   def __init__(self, side=None):
     self.side = side
     self.area = None
-
+  # The next 3 methods below are for you decide to call the side height or width instead of side. 
   def set_side(self, new_side):
     self.side = new_side
     return self.side
