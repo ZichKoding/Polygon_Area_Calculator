@@ -7,7 +7,7 @@ class Rectangle:
     self.diagonal = None
     self.side = None
 
-  def set_attributes(self, new_width=None, new_height=None):
+  def set_attributes(self, new_width=None, new_height=None):  # This function will set new height and width attributes overwriting the previous ones. 
     if new_width is None: # The self.side parts are mainly for the subclass Square below.
       self.side = new_height
       return self.side
@@ -19,15 +19,15 @@ class Rectangle:
       self.height = new_height
       return self.width, self.height
 
-  def set_width(self, new_width):
+  def set_width(self, new_width): # This function will set a new width overwriting the previous one.
     self.width = new_width
     return self.width
 
-  def set_height(self, new_height):
+  def set_height(self, new_height): # This function will set a new height overwriting the previous one.
     self.height = new_height
     return self.height
 
-  def get_area(self):
+  def get_area(self): # This funtions will get the area and is able to be used for square or rectangle.
     if self.side is not None:  # The self.side parts are mainly for the subclass Square below.
       self.area = (self.side ** 2)
       return self.area
@@ -35,7 +35,7 @@ class Rectangle:
       self.area = (self.width * self.height)
       return self.area
 
-  def get_perimeter(self):
+  def get_perimeter(self):# This funtions will get the perimeter and is able to be used for square or rectangle.
     if self.side is not None: # The self.side parts are mainly for the subclass Square below.
       self.perimeter = (self.side * 4)
       return self.perimeter
@@ -43,7 +43,7 @@ class Rectangle:
       self.perimeter = ((2 * self.height) + (2 * self.width))
       return self.perimeter
 
-  def get_diagonal(self):
+  def get_diagonal(self): # This funtions will get the diagonal length and is able to be used for square or rectangle.
     if self.side is not None: # The self.side parts are mainly for the subclass Square below.
       self.diagonal = ((self.side ** 2) * 2) ** 0.5
       return self.diagonal
@@ -77,14 +77,12 @@ class Rectangle:
           self.picture.append(x + '\n')
         return ''.join(self.picture)
 
-
   def __repr__(self):
     rectangle = ["Rectangle" + "(width=" + str(self.width), ", height=" + str(self.height) + ")"]
     return "".join(rectangle)
 
 
-
-class Square(Rectangle):
+class Square(Rectangle): # This subclass inherits all of the Rectangle class's methods.
   def __init__(self, side=None):
     self.side = side
   # The next 3 methods below are for you decide to call the side height or width instead of side. 
